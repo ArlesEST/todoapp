@@ -9,9 +9,12 @@ function App() {
      
       </header>
       <body>
-           <a href="Add.js" className='Trail-button' alt="Create Trail">
-            Create Trailddfadsf
-            </a>
+        <div className='Button'>
+          <button className='Trail-button' alt="Create Trail">
+              Create Trail
+          </button>
+        </div>
+           
       </body>
     </div>
   );
