@@ -23,11 +23,12 @@
 body {
   background-color: black;
   flex: 9; /* Make the body take half of the container's height */
-}
-
-.Button{
+  display: flex;
+  justify-content: center;
   align-items: center;
 }
+
+
 
 
 
@@ -56,8 +57,8 @@ body {
 }
 
 .Trail-button{
-  max-width: 35%;
-  min-height: 20%;
+  min-width: 10vh;
+  min-height: 5vh;
   
   background-color: #ffa31a;
   color: Black;
@@ -70,11 +71,44 @@ body {
   border-color: #ffa31a;
   border-width: 0;
 
-  box-shadow: 0 1.5vh 0 #89590f;
+  box-shadow: 0 1vh 0 #89590f;
 }
 
 .Trail-button:active{
-  margin-top: 3vh;
+  margin-top: 2vh;
   box-shadow: 0 0 0 #89590f;
-  transition: 0.2s;
+  transition: 0.1s;
+}
+
+.Name{
+  min-height: 5vh;
+  min-width: 35vh;
+  margin: 0 3vh 0 0;
+
+  font-weight: bold;
+  text-decoration: none;
+  font-size: calc(10px + 2vmin);
+
+  background-color: #ffa31a;
+  color: Black;
+
+  border: none;
+}
+
+.TaskList {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.TaskList ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.TaskList li {
+  margin: 1rem;
+  font-size: 2rem;
 }
