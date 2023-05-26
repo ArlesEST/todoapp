@@ -11,12 +11,18 @@ function App() {
     setInputValue(event.target.value); // Update inputValue state with the current value of the input field
   };
 
-  const handleCreateTask = () => {
-    if (inputValue.trim() !== '') {
-      setTasks([...tasks, inputValue]); // Add the inputValue to the tasks array
-      setInputValue(''); // Reset inputValue to an empty string
-    }
+  const handleCreateTrail = () => {
+    const name = document.querySelector('.Name').value;
+    const newTask = { name, completed: false };
+    setTasks([...tasks, newTask]);
   };
+
+  const renderTasks = () => {
+    return tasks.map((task, index) => (
+      <Task key={index} name={task.name} completed={task.completed} />
+    ));
+  };
+  
 
   return (
     <div className="App">
