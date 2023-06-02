@@ -1,59 +1,18 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
-const [tasks, setTasks] = useState([]);
-
+import TaskList from './TaskList';
 
 function App() {
-  const [tasks, setTasks] = useState([]); // Initialize tasks state with an empty array
-  const [inputValue, setInputValue] = useState(''); // Initialize inputValue state with an empty string
-
-  const handleInputChange = (event) => {
-    setInputValue(event.target.value); // Update inputValue state with the current value of the input field
-  };
-
-  const handleCreateTrail = () => {
-    const name = document.querySelector('.Name').value;
-    const newTask = { name, completed: false };
-    setTasks([...tasks, newTask]);
-  };
-
-  const renderTasks = () => {
-    return tasks.map((task, index) => (
-      <Task key={index} name={task.name} completed={task.completed} />
-    ));
-  };
-  
-
   return (
     <div className="App">
       <header className="App-header">
         <img src="TrailHub.png" className="App-logo" alt="logo" />
       </header>
       <body>
-        <div className="">
-          <input
-            placeholder="Trail name ..."
-            type="text"
-            className="Name"
-            name="Name"
-            value={inputValue} // Bind the value of the input field to the inputValue state
-            onChange={handleInputChange} // Call handleInputChange when the value of the input field changes
-          />
-          <button className="Trail-button" alt="Create Trail" onClick={handleCreateTrail}>
-            Create Trail
-          </button>
-        </div>
-        <div className="TaskList">
-          <ul>
-            {tasks.map((task, index) => (
-              <li key={index}>{task}</li>
-            ))}
-          </ul>
-        </div>
+        <TaskList />
       </body>
     </div>
   );
 }
 
 export default App;
-
