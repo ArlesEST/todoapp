@@ -44,11 +44,11 @@ function Weather({ place, time }) {
   const temperatureCelsius = Math.round(weatherData.main.temp - 273.15);
 
   return (
-    <div>
-      <p>Weather for {place} at {time}:</p>
-      <p>Temperature: {temperatureCelsius}°C</p>
-      <p>Weather Description: {weatherData.weather[0].description}</p>
-    </div>
+    <>
+      <div className='weather-place'>Weather for {place} at {time}:</div>
+      <div className='weather-temp'>Temperature: {temperatureCelsius}°C</div>
+      <div className='weather-desc'>Weather Description: {weatherData.weather[0].description}</div>
+    </>
   );
 }
 

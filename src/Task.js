@@ -27,9 +27,8 @@ function Task({ task, handleToggleCompleted, handleDeleteTrail }) {
       <div className="task-delete">
         <button onClick={() => handleDeleteTrail(task)}>Delete</button>
       </div>
-      <div>
-        <Weather place={task.place} time={task.time} />
-      </div>
+      <Weather place={task.place} time={task.time} />
+      
     </div>
   );
 }

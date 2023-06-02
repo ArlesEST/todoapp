@@ -71,28 +71,63 @@ button.Trail-button {
 
 .task-container {
   
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px;
+  
+  display: grid;
+  grid-template-columns: 1fr 1fr 2fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  
+  
   border: 1px solid var(--border);
   border-radius: 4px;
-  margin: 1vh;
+
+  margin: 2vh;
+  padding: 2vh;
   
+  grid-template-areas: 
+  "name place weatherPlace"
+  "date time weatherTemp"
+  "checkbox delete weatherDesc";
+}
+
+.weather-container{
+  grid-area: weatherContainer;
+}
+
+.weather-place {
+  grid-area: weatherPlace;
+}
+
+.task-time{
+  grid-area: time;
+}
+
+.weather-temp {
+  grid-area: weatherTemp;
+}
+
+.weather-desc {
+  grid-area: weatherDesc;
+}
+
+.task-place{
+  grid-area: place;
 }
 
 .task-name {
   font-size: 16px;
+
+  grid-area: name;
 }
 
 .task-date {
-  font-size: 14px;
-  color: var(--border);
+  grid-area: date;
 }
 
 .task-checkbox {
   display: flex;
   align-items: center;
+
+  grid-area: checkbox;
 }
 
 .task-delete button {
@@ -103,6 +138,11 @@ button.Trail-button {
   border-radius: 4px;
   font-size: 14px;
   cursor: pointer;
+
+}
+
+.task-delete{
+  grid-area: delete;
 }
 
 .task-delete-completed {
