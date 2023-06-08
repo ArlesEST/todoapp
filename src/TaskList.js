@@ -3,7 +3,7 @@ import Task from './Task';
 
 function TaskList() {
   const [tasks, setTasks] = useState(() => {
-    const localValue = localStorage.getItem("tasks");
+    const localValue = localStorage.getItem('tasks');
     if (localValue == null) return [];
 
     return JSON.parse(localValue);
@@ -25,24 +25,36 @@ function TaskList() {
     const date = document.querySelector('.date').value;
     const time = document.querySelector('.time').value;
     const place = document.querySelector('.place').value;
-  
+
+    // Check if any input field is empty
+    if (!name || !date || !time || !place) {
+      alert('Please fill in all the input fields.');
+      return;
+    }
+
     const currentDate = new Date().toISOString().split('T')[0];
-  
+
     if (date < currentDate) {
       alert('Please choose a date in the future.');
       return;
     }
-  
+
     // Generate timestamp
     const dateTimeString = `${date} ${time}`;
     const dateTime = new Date(dateTimeString);
     const timestamp = Math.floor(dateTime.getTime() / 1000);
     const timestampParam = `dt=${timestamp}`;
-  
-    const newTask = { name, date, time, place, completed: false, timestamp: timestampParam };
+
+    const newTask = {
+      name,
+      date,
+      time,
+      place,
+      completed: false,
+      timestamp: timestampParam,
+    };
     setTasks([...tasks, newTask]);
   };
-  
 
   const handleDeleteTrail = (task) => {
     const newTasks = tasks.filter((t) => t !== task);
@@ -91,14 +103,16 @@ function TaskList() {
           type="text"
           className="Name"
           name="Name"
+          required
         />
-        <input type="date" className="date" name="date" />
-        <input type="time" className="time" name="time" />
+        <input type="date" className="date" name="date" required />
+        <input type="time" className="time" name="time" required />
         <input
           placeholder="Trail place ..."
           type="text"
           className="place"
           name="place"
+          required
         />
         <button className="Trail-button" onClick={handleCreateTrail}>
           Create Trail
