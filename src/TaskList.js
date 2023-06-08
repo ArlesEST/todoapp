@@ -25,17 +25,24 @@ function TaskList() {
     const date = document.querySelector('.date').value;
     const time = document.querySelector('.time').value;
     const place = document.querySelector('.place').value;
-
+  
     const currentDate = new Date().toISOString().split('T')[0];
-
+  
     if (date < currentDate) {
       alert('Please choose a date in the future.');
       return;
     }
-
-    const newTask = { name, date, time, place, completed: false };
+  
+    // Generate timestamp
+    const dateTimeString = `${date} ${time}`;
+    const dateTime = new Date(dateTimeString);
+    const timestamp = Math.floor(dateTime.getTime() / 1000);
+    const timestampParam = `dt=${timestamp}`;
+  
+    const newTask = { name, date, time, place, completed: false, timestamp: timestampParam };
     setTasks([...tasks, newTask]);
   };
+  
 
   const handleDeleteTrail = (task) => {
     const newTasks = tasks.filter((t) => t !== task);

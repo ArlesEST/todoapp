@@ -25,7 +25,7 @@ body{
 .Div-Creater {
   
 
-  column-count: a;
+  column-count: auto;
 
   column-width: 27vh;
 
@@ -69,6 +69,7 @@ button.Trail-button {
   margin-top: 30px;
 }
 
+
 .task-container {
   
   
@@ -99,6 +100,9 @@ button.Trail-button {
 
 .task-time{
   grid-area: time;
+
+  font-style: italic;
+  font-size: 18px;
 }
 
 .weather-temp {
@@ -111,16 +115,24 @@ button.Trail-button {
 
 .task-place{
   grid-area: place;
+
+  font-size: 18px;
 }
 
 .task-name {
-  font-size: 16px;
+  font-size: 20px;
+  font-weight: bold;
 
   grid-area: name;
+
+  
 }
 
 .task-date {
   grid-area: date;
+
+  font-style: italic;
+  font-size: 18px;
 }
 
 .task-checkbox {
@@ -159,4 +171,9 @@ button.Trail-button {
 .task-completed {
   text-decoration: line-through;
   color: var(--primary);
+}
+
+.task-map{
+  height: 400px;
+  width: 400px;
 }

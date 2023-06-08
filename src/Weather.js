@@ -17,10 +17,10 @@ function Weather({ place, time }) {
       });
   }, [place, time]);
 
-  const fetchWeatherData = async (place, time) => {
+  const fetchWeatherData = async (place, timestamp) => {
     try {
       const response = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?q=${place}&appid=6cabf82bcec5f4bd4c0f3ed7eb11f53f`
+        `https://api.openweathermap.org/data/2.5/weather?q=${place}&dt=${timestamp}&appid=6cabf82bcec5f4bd4c0f3ed7eb11f53f`
       );
       if (response.status === 404) {
         throw new Error('Place not found');
