@@ -1,9 +1,10 @@
 import React from 'react';
 import Weather from './Weather';
+import TrailMap from './TrailMap';
 
 function Task({ task, handleToggleCompleted, handleDeleteTrail }) {
   return (
-    <div className="task-container">
+    <div className='task-container'>
       <div className={task.completed ? 'task-name task-completed' : 'task-name'}>
         {task.name}
       </div>
@@ -29,7 +30,15 @@ function Task({ task, handleToggleCompleted, handleDeleteTrail }) {
       </div>
       <Weather place={task.place} time={task.time} />
       
+    
+      <div className='task-map'>
+
+          <TrailMap place={task.place} />
+
+      </div>
     </div>
+    
+    
   );
 }
 
