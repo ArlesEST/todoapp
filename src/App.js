@@ -11,7 +11,6 @@ function App() {
       </header>
       <body>
         <TaskList />
-        
       </body>
     </div>
   );

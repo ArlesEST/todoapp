@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { LoadScript } from '@react-google-maps/api';
 import Task from './Task';
 
 function TaskList() {
@@ -32,11 +33,18 @@ function TaskList() {
       return;
     }
 
-    const currentDate = new Date().toISOString().split('T')[0];
+    const selectedDateTime = new Date(`${date}T${time}`);
 
-    if (date < currentDate) {
-      alert('Please choose a date in the future.');
+    const currentDateTime = new Date();
+
+ 
+
+    if (selectedDateTime < currentDateTime) {
+
+      alert('Please choose a date and time in the future.');
+
       return;
+
     }
 
     // Generate timestamp
@@ -119,6 +127,11 @@ function TaskList() {
         </button>
       </div>
       <div className="tasks">
+         <LoadScript
+              googleMapsApiKey="AIzaSyD2vVtMVL3jAyaNQYOQ_qAcUsmOcn2SkzM"
+              libraries={['places']}
+            >
+        </LoadScript>
         {renderTasks()}
         {tasks.some((task) => task.completed) && (
           <div>

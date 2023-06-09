@@ -1,14 +1,34 @@
 import React, { useEffect, useState } from 'react';
 import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
+import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
 
 function TrailMap({ place }) {
   const mapStyles = {
-    height: '100%',
-    width: '100%',
+    height: '500px',
+    width: '500px',
   };
 
   const [coordinates, setCoordinates] = useState({ lat: 0, lng: 0 });
   const [loading, setLoading] = useState(true);
+
+  const [open, setOpen] = useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    //window.location.reload(false);
+    setOpen(false);
+    //setCoordinates({ lat: 0, lng: 0 });
+    setLoading(false);
+  };
+  
 
   useEffect(() => {
     const fetchCoordinates = async () => {
@@ -18,6 +38,7 @@ function TrailMap({ place }) {
             place
           )}&key=AIzaSyC7Wg_zfZ95N3xx2LYWhPafhSuUU8QT1wA`
         );
+        
         if (response.ok) {
           const data = await response.json();
           if (data.results.length > 0) {
@@ -44,11 +65,34 @@ function TrailMap({ place }) {
   }
 
   return (
-    <LoadScript googleMapsApiKey="AIzaSyD2vVtMVL3jAyaNQYOQ_qAcUsmOcn2SkzM">
-      <GoogleMap mapContainerStyle={mapStyles} center={coordinates} zoom={10}>
-        <Marker position={coordinates} />
-      </GoogleMap>
-    </LoadScript>
+    <div>
+      <Button variant='outlined' onClick={handleClickOpen}>
+        Open Map
+      </Button>
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-describedby='map of the trail'
+        aria-labelledby='map'
+      >
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+              <GoogleMap
+                mapContainerStyle={mapStyles}
+                center={coordinates}
+                zoom={10}
+              >
+                <Marker position={coordinates} />
+              </GoogleMap>
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} autoFocus>
+            Close
+          </Button>
+        </DialogActions>
+      </Dialog>
+    </div>
   );
 }
 
